@@ -22,6 +22,10 @@ body {
   color: var(--text);
   font-family: var(--font-display);
   overflow-x: hidden;
+}
+
+/* Custom cursor only on public pages */
+body:not(#admin-root) {
   cursor: none;
 }
 
@@ -29,7 +33,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* Custom cursor */
+/* Custom cursor - only applied on public pages via inline components */
 .cursor {
   position: fixed;
   width: 12px;
@@ -53,3 +57,12 @@ a { color: inherit; text-decoration: none; }
 }
 .cursor.hover { transform: scale(2.5); background: var(--accent3); }
 .cursor-ring.hover { width: 60px; height: 60px; border-color: var(--accent3); }
+
+/* Admin panel - use system cursor */
+body.admin-panel {
+  cursor: auto !important;
+}
+body.admin-panel .cursor,
+body.admin-panel .cursor-ring {
+  display: none !important;
+}
